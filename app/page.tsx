@@ -1,65 +1,82 @@
-import Image from "next/image";
+import Link from 'next/link';
 
-export default function Home() {
+export const metadata = {
+  title: 'Are You The Problem? — AI-powered LoL analysis',
+  description:
+    'AI-powered match analysis for League players — champion performance, role-specific tips, and practice drills from your season history.',
+};
+
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="relative min-h-screen flex items-center justify-center text-center">
+      {/* Background (decorative) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center brightness-75"
+        style={{ backgroundImage: "url('/rift-bg.jpg')" }}
+        aria-hidden="true"
+      />
+
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" />
+
+      {/* Foreground content */}
+      <div className="relative z-10 text-white px-4">
+        <h1 className="text-4xl sm:text-6xl font-extrabold drop-shadow-lg">
+          Are You The Problem?
+        </h1>
+        <p className="mt-4 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto">
+          AI-powered match analysis for League players — champion performance, role-specific tips, and practical
+          drills from your season history.
+        </p>
+
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <Link
+            href="/analyze"
+            className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            aria-label="Analyze my season"
+          >
+            Analyze My Season
+          </Link>
+
+          <a href="#how-it-works" className="text-emerald-300 hover:underline">
+            How it works
+          </a>
+        </div>
+
+        <section className="mt-12 grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto" aria-label="Key features">
+          <div className="bg-white/5 p-6 rounded-lg">
+            <h3 className="text-lg font-semibold">Personalized Insights</h3>
+            <p className="mt-2 text-sm text-gray-300">Understand your strengths and weaknesses across champions and roles.</p>
+          </div>
+
+          <div className="bg-white/5 p-6 rounded-lg">
+            <h3 className="text-lg font-semibold">Champion Tips</h3>
+            <p className="mt-2 text-sm text-gray-300">Build, rune, and laning advice tailored to your playstyle.</p>
+          </div>
+
+          <div className="bg-white/5 p-6 rounded-lg">
+            <h3 className="text-lg font-semibold">Training Drills</h3>
+            <p className="mt-2 text-sm text-gray-300">Short, actionable drills to improve your next games.</p>
+          </div>
+        </section>
+
+        <section id="how-it-works" className="mt-12 text-left max-w-3xl mx-auto bg-white/5 p-6 rounded-lg" aria-label="How it works">
+          <h2 className="text-2xl font-bold">How it works</h2>
+          <ol className="mt-4 list-decimal list-inside text-gray-300">
+            <li>Connect your Riot account securely.</li>
+            <li>We analyze your match history & generate AI-driven insights.</li>
+            <li>Receive personalized tips and practice drills to improve.</li>
+          </ol>
+
+          <p className="mt-4 text-xs text-gray-400">
+            We only use your match data to generate insights. See our{' '}
+            <Link href="/privacy" className="underline">
+              Privacy Policy
+            </Link>
+            .
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </section>
+      </div>
+    </main>
   );
 }
