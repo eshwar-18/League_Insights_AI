@@ -1,0 +1,92 @@
+:root {
+  --loop: 10s;
+  --img: url("/summoners-rift.jpg"); /* put your image in /public */
+  --bg-scale: 1.06;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  transform: scale(var(--bg-scale));
+  will-change: transform, background-position, filter;
+  animation:
+    pan var(--loop) linear infinite,
+    zoom var(--loop) ease-in-out infinite;
+}
+
+.glow {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    40vmin 30vmin at 52% 47%,
+    rgba(90, 200, 255, 0.35),
+    rgba(90, 200, 255, 0.15) 45%,
+    rgba(90, 200, 255, 0) 75%
+  );
+  filter: blur(10px) saturate(1.1);
+  animation: pulse var(--loop) ease-in-out infinite;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    90% 80% at 50% 55%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+}
+
+@keyframes pan {
+  0% {
+    background-position: 45% 52%;
+  }
+  50% {
+    background-position: 55% 48%;
+  }
+  100% {
+    background-position: 45% 52%;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    transform: scale(1.03);
+    filter: brightness(1.04) saturate(1.03);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1) saturate(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg,
+  .glow {
+    animation: none;
+  }
+}

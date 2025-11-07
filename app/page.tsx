@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Are You The Problem? — AI-powered LoL analysis',
+  title: 'Are You The Problem? - AI-powered LoL analysis',
   description:
     'AI-powered match analysis for League players — champion performance, role-specific tips, and practice drills from your season history.',
 };
@@ -31,7 +31,7 @@ export default function Page() {
 
         <div className="mt-8 flex items-center justify-center gap-4">
           <Link
-            href="/analyze"
+            href="/login"
             className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition focus:outline-none focus:ring-2 focus:ring-emerald-400"
             aria-label="Analyze my season"
           >
